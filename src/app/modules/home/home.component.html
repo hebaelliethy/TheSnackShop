@@ -12,8 +12,8 @@
          <img mat-card-image src="{{snack.photoUrl}}">   
        
          <mat-card-actions class="snack-button">
-           <button >Details</button>
-       
+           <button  [routerLink]="['/snack', snack.id]">Details</button>
+           
          </mat-card-actions>
        
        </mat-card>
