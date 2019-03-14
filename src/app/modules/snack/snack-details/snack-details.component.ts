@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SnackDetailsService } from './snack-details.service';
+import { Isnack } from '../../home/snack';
 
 @Component({
   selector: 'app-snack-details',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SnackDetailsComponent implements OnInit {
 
-  constructor() { }
+
+snackDetails:Isnack;
+count:number=0;
+  constructor(private snackDetailsService:SnackDetailsService) { }
 
   ngOnInit() {
-  }
+    this.getDetails();
 
+  }
+//inject service into component ... 
+getDetails(){
+this.snackDetailsService.data.subscribe(data =>
+   { this.snackDetails=data
+
+  })
+  }
+ // this.snackDetailsService.updateData(newData);
 }

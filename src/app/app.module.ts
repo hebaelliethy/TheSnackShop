@@ -10,12 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './modules/shared/header/header.component';
+import { SnackDetailsComponent } from './modules/snack/snack-details/snack-details.component';
+import { SnackDetailsService } from './modules/snack/snack-details/snack-details.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    SnackDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { HeaderComponent } from './modules/shared/header/header.component';
 
     HttpClientModule
   ],
-  providers: [HomeService],
+  providers: [HomeService,SnackDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

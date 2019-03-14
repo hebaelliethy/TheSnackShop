@@ -2,7 +2,7 @@
   <!-- <div layout="horizontal" layout-align="center center" > -->
       <mat-card class="container" fxLayout="row wrap" fxLayoutWrap>
 
-      <mat-card  class="snack-card"  style="margin:2em;" *ngFor="let snack of snacklist.items" >
+      <mat-card  class="snack-card"  style="margin:2em;" *ngFor="let snack of snacklist" >
           <div mat-card-avatar class="example-header-image"></div>
             <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
          <mat-card-header>
@@ -12,8 +12,10 @@
          <img mat-card-image src="{{snack.photoUrl}}">   
        
          <mat-card-actions class="snack-button">
-           <button  [routerLink]="['/snack', snack.id]">Details</button>
-           
+         
+             <button (click)="getSnackDetails(snack.id)" 
+             [routerLink]="['/snack',snack.id]">Details</button>
+
          </mat-card-actions>
        
        </mat-card>

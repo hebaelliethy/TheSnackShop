@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Isnack } from './snack';
+import { SnackDetailsService } from '../snack/snack-details/snack-details.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +11,34 @@ import { Isnack } from './snack';
 })
 export class HomeComponent implements OnInit {
   //public snackist = [] snack;
-  snacklist: Isnack[]=[];
+  snacklist: Isnack[] = [];
 
   constructor(
-    private homeService:HomeService
-  ) { 
+    private homeService: HomeService,
+    private snackDetailsService:SnackDetailsService,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
     this.getData();
   }
-  getData(){
+  getData() {
     this.homeService.getSnacks().subscribe(
-      (res)=>
-    {
-      
-this.snacklist=(res);
-console.log(this.snacklist)
-    }
+      (res) => {
+        this.snacklist = res.items;
+        //console.log(this.snacklist)
+      }
     )
+
+  }
+  getSnackDetails(id:number)
+  {
+    var  snackNew=this.snacklist.find(data=>data.id==id);
+
+    // debugger;
+    this.snackDetailsService.updatedDataSelection(snackNew);
+    // this.router.navigate(['/snack'],{ queryParams: { id: 'snack.id' } });
 
   }
   // self.expenseSrv.getExpenses(cashRegister,branch)

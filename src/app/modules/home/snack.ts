@@ -6,6 +6,6 @@ export class Isnack {
     price: number;
 
 }
-// export interface IsnackRoot {
-//     snacks: Isnack[];
-// }
+export interface IsnackRoot {
+    items: Isnack[];
+}
